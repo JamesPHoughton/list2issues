@@ -1,0 +1,13 @@
+name: list2issues
+description: Creates standard issues from a markdown file
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: list
+  color: yellow
+inputs:
+  filename:  # local path to markdown file that issues will be created from
+    description: 'The local path of the file to use to create issues'
+    required: true
+    default: '.github/issue_list.md'
