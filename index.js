@@ -7,7 +7,7 @@ Toolkit.run(async tools => {
 
   // Get the file
   tools.log.debug('Reading from file', listFile);
-  const text = await tools.readFile(listFile);
+  const text = await tools.getFile(listFile);
 
   // break the file apart into milestones
   const milestones = text.split(/.*(?=[\r\n]\#\s)/).map(x => x.trim());
