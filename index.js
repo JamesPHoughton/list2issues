@@ -12,7 +12,7 @@ Toolkit.run(async tools => {
   // break the file apart into milestones
   const milestones = text.split(/.*(?=[\r\n]\#\s)/).map(x => x.trim())
 
-  milestones.map( ms => {
+  const result = await Promise.all(milestones.map( async ms => {
     const ms_title = ms.split(/[\r\n]/)[0].slice(1).trim()
     const ms_description = ms.split(/[\n\r]\##\s/)[0].split(/[\n\r]/).slice(1).join('\n')
 
@@ -26,7 +26,7 @@ Toolkit.run(async tools => {
 
     // break milestone apart into issues
     const issues = ms.split(/[\r\n]\#\#\s/).slice(1)
-    issues.map( iss => {
+    const iss_res = await Promise.all(issues.map( async iss => {
       const lines = iss.split(/[\n\r]/)
       const iss_title = lines[0]
       const body = lines.slice(1).join('\n')
